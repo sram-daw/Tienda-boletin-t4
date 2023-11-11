@@ -33,7 +33,21 @@ namespace Tienda.Models
             return isBorrarOk;
         }
 
-        public void Dispose()
+		public bool EditProducto(int id, string nombre, double precio)
+		{
+			bool isEditOk = false;
+			Producto producto = _context.producto.FirstOrDefault(producto => producto.codigo == id);
+			if (producto != null)
+			{
+				producto.nombre= nombre;
+                producto.precio= precio;
+				_context.SaveChanges();
+				isEditOk = true;
+			}
+			return isEditOk;
+		}
+
+		public void Dispose()
         {
             _context.Dispose();
         }

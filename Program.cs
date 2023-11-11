@@ -26,6 +26,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 
+app.MapControllerRoute(
+    name: "edit",
+    pattern: "{controller=Producto}/{action=ModificarProducto}/{id}/{nombre}/{precio}");
 
 app.MapControllerRoute(
     name: "default",
